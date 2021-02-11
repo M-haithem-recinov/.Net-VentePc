@@ -1,0 +1,53 @@
+﻿@model IEnumerable<VentePc.Models.client>
+
+@{
+    ViewData["Title"] = "Listes des clients ";
+}
+
+<h1>Listes des clients</h1>
+
+<p>
+    <i class="fas fa-plus-circle"></i>  <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrenomClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdresseClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactClient)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdresseClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactClient)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClientId"><i class="fas fa-edit"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.ClientId"><i class="fas fa-eye"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.ClientId"><i class="fas fa-trash-alt"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
